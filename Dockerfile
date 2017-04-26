@@ -26,4 +26,5 @@ RUN echo 'PATH=$PATH:/usr/local/go/bin/local/docker-credential-ecr-login' >> ~/.
 
 # re-added because of the user switch, and for explicitness
 USER vsts
-CMD /usr/local/vsts-agent/start.sh
+WORKDIR /usr/local/vsts-agent
+CMD ./start.sh
