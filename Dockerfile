@@ -26,5 +26,5 @@ RUN echo 'PATH=$PATH:/usr/local/go/bin/local/docker-credential-ecr-login' >> ~/.
     mkdir ~/.docker && echo '{"credsStore": "ecr-login"}' >> ~/.docker/config.json
 
 # re-added because of the user switch, and for explicitness
-USER vsts
+# USER vsts
 # CMD ./start.sh
