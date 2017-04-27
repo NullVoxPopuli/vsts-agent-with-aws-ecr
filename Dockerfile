@@ -1,5 +1,6 @@
 # https://github.com/developertown/vsts-agent 
-FROM developertown/vsts-agent
+# FROM developertown/vsts-agent
+FROM microsoft/vsts-agent:ubuntu-16.04-tfs-2017-docker-17.03.0-ce-standard
 
 USER root
 
@@ -26,5 +27,4 @@ RUN echo 'PATH=$PATH:/usr/local/go/bin/local/docker-credential-ecr-login' >> ~/.
 
 # re-added because of the user switch, and for explicitness
 USER vsts
-WORKDIR /usr/local/vsts-agent
-CMD ./start.sh
+# CMD ./start.sh
