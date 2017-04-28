@@ -2,7 +2,7 @@
 # FROM developertown/vsts-agent
 FROM microsoft/vsts-agent:ubuntu-16.04-tfs-2017-docker-17.03.0-ce-standard
 
-USER root
+#USER root
 
 RUN apt-get update -qq && \
     apt-get install -y \
