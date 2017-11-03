@@ -2,18 +2,15 @@
 # FROM developertown/vsts-agent
 FROM microsoft/vsts-agent:ubuntu-16.04-tfs-2017-docker-17.06.0-ce-standard
 
-ENV PATH=$PATH:~/.local/bin
-
 RUN apt-get update -qq && \
     apt-get install -y \
       wget \
-      make
-      
-# Install awscli 
-RUN echo \
-  && curl -O https://bootstrap.pypa.io/get-pip.py \
-  && python get-pip.py --user \
-  && pip install awscli --upgrade --user
+      make \
+      python3.5 \
+      python3-pip
+
+# Install awscli
+RUN pip3 install awscli --upgrade --user
 
 # Install golang
 # - Required for the Amazon ECR Credential Helper
@@ -32,8 +29,7 @@ RUN cd /usr/local/go/bin && \
     git clone https://github.com/awslabs/amazon-ecr-credential-helper.git && \
     cd amazon-ecr-credential-helper && \
     make && \
-    mv ./bin/local/docker-credential-ecr-login /usr/local/go/bin/local/ && \
-    pip install awscli --upgrade --user
+    mv ./bin/local/docker-credential-ecr-login /usr/local/go/bin/local/
 
 
 ENV PATH=$PATH:/usr/local/go/bin/local/
