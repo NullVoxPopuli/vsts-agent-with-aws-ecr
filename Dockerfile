@@ -25,7 +25,9 @@ RUN cd /usr/local/go/bin && \
     git clone https://github.com/awslabs/amazon-ecr-credential-helper.git && \
     cd amazon-ecr-credential-helper && \
     make && \
-    mv ./bin/local/docker-credential-ecr-login /usr/local/go/bin/local/
+    mv ./bin/local/docker-credential-ecr-login /usr/local/go/bin/local/ && \
+    pip install awscli --upgrade --user
+
 
 ENV PATH=$PATH:/usr/local/go/bin/local/
 
