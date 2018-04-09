@@ -39,7 +39,8 @@ ENV PATH=$PATH:/usr/local/go/bin/local/
 RUN curl \
   -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl && \
   chmod +x ./kubectl && \
-  mv ./kubectl /usr/local/bin/kubectl
+  mv ./kubectl /usr/local/bin/kubectl && \
+  crontab -l | { cat; echo "@monthly docker system prune -f --volumes"; } | crontab -
 
 
 RUN mkdir ~/.docker && echo '{"credsStore": "ecr-login"}' >> ~/.docker/config.json
